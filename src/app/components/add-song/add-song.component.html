@@ -1,0 +1,70 @@
+<div class="py4 h-100 card-wrapper">
+    <mat-card class="">
+        <mat-card-title>{{title}}</mat-card-title>
+        <mat-card-subtitle>* Mandatory Fields</mat-card-subtitle>
+
+        <mat-card-content>
+            <div *ngIf="form">
+                <form [formGroup]="form" (ngSubmit)="submitForm(form)" #AddSongForm="ngForm" class="w-100 form-wrapper">
+                    <div class="">
+                        <div>
+                            <mat-form-field appearance="fill" class="w-100">
+                                <mat-label>Name</mat-label>
+                                <input matInput formControlName="name">
+                                <mat-error>Name is required</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field appearance="fill" class="w-100">
+                                <mat-label>Artist</mat-label>
+                                <input matInput formControlName="artist">
+                                <mat-error>Artist is required</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field appearance="fill" class="w-100">
+                                <mat-label>Year</mat-label>
+                                <input matInput formControlName="year" type="text" pattern="[0-9]+" maxlength="4">
+                                <mat-error *ngIf="form.get('year')?.errors?.['pattern']?.actualValue">Invalid Value
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field appearance="fill" class="w-100">
+                                <mat-label>Genre</mat-label>
+                                <mat-select matNativeControl name="genre" formControlName="genre">
+                                    <mat-option value="rock">Rock</mat-option>
+                                    <mat-option value="pop">Pop</mat-option>
+                                    <mat-option value="hipHop">Hip Hop</mat-option>
+                                    <mat-option value="jazz">Jazz</mat-option>
+                                    <mat-option value="folk">Folk</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="album-art-wrapper flex flex-column align-center items-center">
+                            <img [src]="imgUrl | safeUrl" width="70%" class="mb2">
+                            <button mat-flat-button color="primary" type="button"
+                                (click)="onChangeAlbumArtClick(AlbumArtFileInput)">Change</button>
+                            <input type="file" class="album-art-file-input" #AlbumArtFileInput
+                                accept="image/jpeg,image/jpg,image/png" (change)="onAlbumArtChange($event)">
+                            <mat-form-field appearance="fill" class="w-100" style="visibility: hidden;">
+                                <input matInput formControlName="albumArt">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </mat-card-content>
+
+
+        <mat-card-actions align="end">
+            <button mat-stroked-button (click)="onBackClick()">Back</button>
+            <button mat-raised-button color="primary" (click)="onSaveClick($event)"
+                [disabled]="!form?.valid">Save</button>
+            <!-- [disabled]="!form?.valid" -->
+        </mat-card-actions>
+    </mat-card>
+</div>

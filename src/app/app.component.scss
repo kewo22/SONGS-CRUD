@@ -1,0 +1,39 @@
+:host {
+  // display: flex;
+  // flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.app-wrapper {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+main {
+  overflow: auto;
+  padding-top: 64px;
+  height: 100%;
+}
+
+.brand-link {
+  text-decoration: none;
+}
+
+.brand-link:active {
+  color: black;
+}

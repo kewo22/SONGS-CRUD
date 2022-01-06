@@ -1,0 +1,42 @@
+:host {
+  display: block;
+}
+
+.card-wrapper {
+  width: 800px;
+  margin: auto;
+}
+
+.form-wrapper {
+  display: flex;
+
+  :first-child {
+    flex: 0 0 70%;
+  }
+
+  :last-child {
+    flex-grow: 1;
+  }
+}
+
+.album-art-wrapper {
+}
+
+.album-art-file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
